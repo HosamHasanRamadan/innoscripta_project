@@ -260,22 +260,25 @@ class ColorPickerDialog extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               ...ThemeMode.values.map(
-                (e) => Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Radio(
-                      groupValue: viewModel.themeMode,
-                      value: e,
-                      onChanged: (value) {
-                        if (value == null) return;
-                        viewModel.themeMode = value;
-                      },
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    Text(e.name)
-                  ],
+                (e) => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Radio(
+                        groupValue: viewModel.themeMode,
+                        value: e,
+                        onChanged: (value) {
+                          if (value == null) return;
+                          viewModel.themeMode = value;
+                        },
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Text(e.name)
+                    ],
+                  ),
                 ),
               )
             ],
