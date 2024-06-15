@@ -114,6 +114,7 @@ class TaskRepository {
     );
     final response = await httpClient.deleteUri(path).result;
     if (response.isError) return false;
+    localStorage.removeKey(taskId);
     return true;
   }
 
