@@ -156,25 +156,25 @@ class ProjectViewModel
     return false;
   }
 
-  Future<bool> completeTask(CardBoardItem task) async {
+  Future<bool> completeTask(CardBoardItem cardItem) async {
     final groupController = controller.getGroupController(
-      task.trackableTask.task.sectionId,
+      cardItem.trackableTask.task.sectionId,
     );
 
     final index = groupController!.items.indexWhere(
-      (element) => element.id == task.id,
+      (element) => element.id == cardItem.id,
     );
     if (index >= 0) {
       groupController.removeAt(
         index,
       );
     }
-    final isOk = await _taskRepository.completeTask(taskId: task.id);
+    final isOk = await _taskRepository.completeTask(taskId: cardItem.id);
     if (isOk) return true;
 
     groupController.insert(
       index,
-      task,
+      cardItem,
     );
     return false;
   }
@@ -267,6 +267,15 @@ class ProjectViewModel
       toGroupOrderedIds:
           groupBController.items.map((element) => element.id).toList(),
     );
+
+    controller.updateGroupItem(
+      toGroupId,
+      CardBoardItem(
+        target.trackableTask.copyWith.task(
+          sectionId: toGroupId,
+        ),
+      ),
+    );
   }
 
   void _updateLocalOrder(String sectionId) {
@@ -277,10 +286,8 @@ class ProjectViewModel
       controller.updateGroupItem(
         sectionId,
         CardBoardItem(
-          element.trackableTask.copyWith(
-            task: element.trackableTask.task.copyWith(
-              order: index,
-            ),
+          element.trackableTask.copyWith.task(
+            order: index,
           ),
         ),
       );
