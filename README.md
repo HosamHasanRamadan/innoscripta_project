@@ -1,5 +1,4 @@
 <div style="display: flex; overflow-x: auto; white-space: nowrap; padding: 10px;">
-
   <img src="./screen_shots/flutter_01.png" alt="Image 1" style="height: 300px; margin-right: 10px;">
   <img src="./screen_shots/flutter_02.png" alt="Image 1" style="height: 300px; margin-right: 10px;">
   <img src="./screen_shots/flutter_03.png" alt="Image 1" style="height: 300px; margin-right: 10px;">
@@ -43,15 +42,23 @@ To get a list of available `DEVICE_ID`, use `flutter run`.
 - Typical values are: `windows`, `linux`, `macos`, `chrome`.
 - Add `--release` to deploy an optimized build.
 
+**Note:**
+
+If you want to add your Todoist `apiKey` pass it as compile time constant for ex:
+`flutter run --dart-define "apiKey={APIKEY}"`
+
+Or you can change in `lib/config/constants.dart` file
+
 ### Release Builds
 
 - Use `flutter build PACKAGE_TYPE` to build a release package.
 - To get a list of available `PACKAGE_TYPE`, use `flutter build`.
 - Typical values are `windows`, `linux` ,`apk` , `ios`.
 
+
 ## Demo build
 
-- Web : 
+- Web : https://innoscripta.codemagic.app
 
 ## Supported platforms
 
@@ -65,7 +72,7 @@ To get a list of available `DEVICE_ID`, use `flutter run`.
 ## App Features
 
 - [x] Kanban board for tasks, where users can create, edit, and move tasks between different columns.
-- [x] A timer function that allows users to start and stop tracking the time spent on each task.
+- [x] A timer function that allows users to start and stop tracking the time spent on each task. **⚠️ Local Only ⚠️** 
 - [x] A history of completed tasks, including the time spent on each task and the date it was completed.
 - [x] Customizable themes: Allow users to customize the look and feel of the app by choosing from a selection of pre-defined color schemes.
 
